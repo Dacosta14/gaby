@@ -16,7 +16,6 @@ function TunnelScene({ setScene }) {
   return (
     <div className="w-screen h-dvh overflow-hidden relative bg-black">
 
-      {/* TÚNEL */}
       <motion.img
         initial={{
           scale: 1,
@@ -45,7 +44,7 @@ function TunnelScene({ setScene }) {
         draggable={false}
       />
 
-      {/* SOMBRA */}
+
       <motion.div
         initial={{
           opacity: 0.45,
@@ -64,7 +63,7 @@ function TunnelScene({ setScene }) {
         "
       />
 
-      {/* VINHETA */}
+
       <motion.div
         initial={{
           opacity: 0.6,
@@ -87,7 +86,7 @@ function TunnelScene({ setScene }) {
         }}
       />
 
-      {/* RESPIRAÇÃO DE LUZ */}
+      
       <motion.div
         animate={{
           opacity: [0.04, 0.1, 0.04],
@@ -109,7 +108,7 @@ function TunnelScene({ setScene }) {
         }}
       />
 
-      {/* FADE FINAL */}
+
       <motion.div
         initial={{
           opacity: 0,

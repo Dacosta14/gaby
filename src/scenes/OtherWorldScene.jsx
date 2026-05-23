@@ -8,7 +8,6 @@ function OtherWorldScene() {
   return (
     <div className="w-screen h-dvh overflow-hidden relative bg-black">
 
-      {/* FUNDO BLURADO */}
       <motion.img
         initial={{
           opacity: 0,
@@ -35,7 +34,6 @@ function OtherWorldScene() {
         draggable={false}
       />
 
-      {/* IMAGEM PRINCIPAL */}
       <motion.img
         initial={{
           opacity: 0,
@@ -65,7 +63,7 @@ function OtherWorldScene() {
         draggable={false}
       />
 
-      {/* OVERLAY */}
+ 
       <div
         className="
           absolute
@@ -75,7 +73,6 @@ function OtherWorldScene() {
         "
       />
 
-      {/* LUZ ROXA */}
       <motion.div
         animate={{
           opacity: [0.15, 0.3, 0.15],
@@ -97,7 +94,6 @@ function OtherWorldScene() {
         }}
       />
 
-      {/* VINHETA */}
       <div
         className="
           absolute
@@ -111,8 +107,7 @@ function OtherWorldScene() {
         }}
       />
 
-      {/* PARTÍCULAS */}
-      {[...Array(22)].map((_, index) => (
+        {[...Array(22)].map((_, index) => (
         <motion.div
           key={index}
           animate={{
@@ -141,7 +136,7 @@ function OtherWorldScene() {
         />
       ))}
 
-      {/* BINÁRIO ESCONDIDO */}
+
       <motion.button
         initial={{
           opacity: 0,
@@ -169,7 +164,7 @@ function OtherWorldScene() {
         "
       >
 
-        {/* GLOW */}
+
         <div
           className="
             absolute
@@ -183,7 +178,7 @@ function OtherWorldScene() {
           }}
         />
 
-        {/* TEXTO */}
+        
         <motion.p
           animate={{
             opacity: [0.08, 0.18, 0.08],
@@ -214,7 +209,7 @@ function OtherWorldScene() {
         </motion.p>
       </motion.button>
 
-      {/* MODAL BINÁRIO */}
+      
       {showBinary && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -324,7 +319,7 @@ function OtherWorldScene() {
         </motion.div>
       )}
 
-      {/* GLOW CENTRAL */}
+
       <motion.div
         animate={{
           opacity: [0.12, 0.28, 0.12],
@@ -353,7 +348,6 @@ function OtherWorldScene() {
         }}
       />
 
-      {/* FADE */}
       <motion.div
         initial={{
           opacity: 1,

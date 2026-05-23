@@ -10,24 +10,41 @@ function App() {
 
   const audioRef = useRef(null)
 
-useEffect(() => {
+  useEffect(() => {
 
-  const audio = new Audio("/music.mp3")
+    const audio = new Audio("/music.mp3")
 
-  audio.loop = true
-  audio.volume = 0.22
+    audio.loop = true
+    audio.volume = 0.18
 
-  audioRef.current = audio
+    audioRef.current = audio
 
-  audio.play().catch(() => {
-    console.log("autoplay bloqueado")
-  })
+    
+    const startAudio = () => {
 
-  return () => {
-    audio.pause()
-  }
+      audio.play()
+        .then(() => {
+          console.log("tocando")
+        })
+        .catch((err) => {
+          console.log(err)
+        })
 
-}, [])
+      
+      window.removeEventListener("click", startAudio)
+      window.removeEventListener("touchstart", startAudio)
+    }
+
+    
+    window.addEventListener("click", startAudio)
+    window.addEventListener("touchstart", startAudio)
+
+    return () => {
+      audio.pause()
+    }
+
+  }, [])
+
   return (
     <>
       {scene === "intro" && (
