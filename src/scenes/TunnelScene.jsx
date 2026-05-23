@@ -4,29 +4,33 @@ import { useEffect } from "react"
 function TunnelScene({ setScene }) {
 
   useEffect(() => {
+
     const timer = setTimeout(() => {
       setScene("otherworld")
-    }, 3200)
+    }, 2400)
 
     return () => clearTimeout(timer)
+
   }, [])
 
   return (
-    <div className="w-screen h-screen overflow-hidden relative bg-black">
+    <div className="w-screen h-dvh overflow-hidden relative bg-black">
 
       {/* TÚNEL */}
       <motion.img
         initial={{
           scale: 1,
-          filter: "blur(0px) brightness(0.8)",
+          rotate: 0,
+          filter: "brightness(0.7)",
         }}
         animate={{
-          scale: 1.8,
-          filter: "blur(2px) brightness(1)",
+          scale: 1.35,
+          rotate: -1.5,
+          filter: "brightness(1)",
         }}
         transition={{
-          duration: 3.2,
-          ease: "easeIn",
+          duration: 2.4,
+          ease: [0.76, 0, 0.24, 1],
         }}
         src="/tunel.jpg"
         alt="Tunel"
@@ -36,15 +40,21 @@ function TunnelScene({ setScene }) {
           w-full
           h-full
           object-cover
+          will-change-transform
         "
+        draggable={false}
       />
 
-      {/* OVERLAY ESCURO */}
+      {/* SOMBRA */}
       <motion.div
-        initial={{ opacity: 0.2 }}
-        animate={{ opacity: 0.45 }}
+        initial={{
+          opacity: 0.45,
+        }}
+        animate={{
+          opacity: 0.68,
+        }}
         transition={{
-          duration: 3,
+          duration: 2.4,
         }}
         className="
           absolute
@@ -55,7 +65,16 @@ function TunnelScene({ setScene }) {
       />
 
       {/* VINHETA */}
-      <div
+      <motion.div
+        initial={{
+          opacity: 0.6,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          duration: 2.4,
+        }}
         className="
           absolute
           inset-0
@@ -64,98 +83,54 @@ function TunnelScene({ setScene }) {
         "
         style={{
           background:
-            "radial-gradient(circle, transparent 35%, rgba(0,0,0,0.85) 100%)",
+            "radial-gradient(circle, transparent 18%, rgba(0,0,0,0.95) 100%)",
         }}
       />
 
-      {/* TEXTO */}
+      {/* RESPIRAÇÃO DE LUZ */}
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 30,
-        }}
         animate={{
-          opacity: [0, 1, 1, 0],
-          y: [30, 0, 0, -20],
+          opacity: [0.04, 0.1, 0.04],
         }}
         transition={{
-          duration: 2.8,
-          times: [0, 0.2, 0.8, 1],
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
         className="
           absolute
-          top-[12%]
-          w-full
-          text-center
+          inset-0
           z-[3]
-          px-6
+          pointer-events-none
         "
-      >
-        <h1
-          className="
-            text-white
-            text-2xl
-            md:text-4xl
-            lg:text-5xl
-            font-light
-            tracking-[0.35em]
-            uppercase
-            drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]
-          "
-        >
-          
-        </h1>
-      </motion.div>
-
-      {/* PARTICULAS */}
-      {[...Array(12)].map((_, index) => (
-        <motion.div
-          key={index}
-          initial={{
-            opacity: 0,
-            scale: 0,
-          }}
-          animate={{
-            opacity: [0, 0.6, 0],
-            scale: [0, 1, 2],
-            y: [0, -200],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            delay: index * 0.2,
-            ease: "easeOut",
-          }}
-          className="
-            absolute
-            rounded-full
-            bg-white
-            blur-sm
-          "
-          style={{
-            width: "6px",
-            height: "6px",
-            left: `${Math.random() * 100}%`,
-            bottom: "-10%",
-          }}
-        />
-      ))}
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(255,255,255,0.12), transparent 45%)",
+        }}
+      />
 
       {/* FADE FINAL */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
         transition={{
-          duration: 0.7,
-          delay: 2.5,
+          duration: 0.9,
+          delay: 1.7,
+          ease: "easeInOut",
         }}
         className="
           absolute
           inset-0
           bg-black
           z-[10]
+          pointer-events-none
         "
       />
+
     </div>
   )
 }
