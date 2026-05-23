@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 
-function IntroScene({ setScene }) {
+function IntroScene({ setScene, startMusic }) {
 
   const [opened, setOpened] = useState(false)
   const [showBinary, setShowBinary] = useState(false)
@@ -195,7 +195,12 @@ function IntroScene({ setScene }) {
             duration: 1.5,
             ease: "easeOut",
           }}
-          onDrag={handleDrag}
+          onDrag={(event, info) => {
+
+  startMusic()
+
+  handleDrag(event, info)
+}}
           src="/key.png"
           alt="Chave"
           className="
